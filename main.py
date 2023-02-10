@@ -29,5 +29,12 @@ def player_guess():
         for color in guess:
             if color not in COLORS:
                 print(f"Invalid color: {color}. Try again.")
+                break
+        else:
+            break
+        
+        return guess
 
-
+# THis function is for checking and validating if the guess of the user is/has the same color combination with the color generator
+def check_code(guess, key_to_correction):
+    
