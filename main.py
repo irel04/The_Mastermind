@@ -53,4 +53,8 @@ def check_code(guess, key_to_correction):
             correct_pos += 1
             color_count[guess_color] -= 1
     
-    # Checking if the guess color is in the list of the correct answer and omitting the possibility of 
+    # Checking if the guess color is in the list of the correct answer and not reusing the one who has partnered color
+    for guess_color, real_color in zip(guess, key_to_correction):
+        if guess_color in color_count and color_count[guess_color] > 0:
+            incorrect_pos += 1
+            color_count[guess_color] -= 1
