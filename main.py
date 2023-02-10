@@ -37,4 +37,20 @@ def player_guess():
 
 # THis function is for checking and validating if the guess of the user is/has the same color combination with the color generator
 def check_code(guess, key_to_correction):
+    color_count = {}
+    correct_pos = 0
+    incorrect_pos = 0
+
+    # Iterating the color in the key then making if-else statement to check then append it to dictionary
+    for color in key_to_correction:
+        if color not in color_count:
+            color_count[0] = 0
+        color_count[color] += 1
     
+    # Comparing which colors are in correct position
+    for guess_color, real_color in zip(guess, key_to_correction):
+        if guess_color == real_color:
+            correct_pos += 1
+            color_count[guess_color] -= 1
+    
+    # Checking if the guess color is in the list of the correct answer and omitting the possibility of 
