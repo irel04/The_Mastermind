@@ -17,6 +17,17 @@ def generate_code():
 
 # This function will allow us to get input from the users
 def player_guess():
-    guess = input("Guess the color combination: ").upper().split(" ") # Split method allow us to separate the input and turn it into a list
-    
+    while True:
+        guess = input("Guess the color combination: ").upper().split(" ") # Split method allow us to separate the input and turn it into a list
+
+        # Filtering the user input if he entered insufficient colors to the prompt
+        if len(guess) != CODE_LENGTH:
+            print(f"You must guess {CODE_LENGTH} colors.")
+            continue
+
+        # Spectating if the color given by the user is valid or in the given list of color
+        for color in guess:
+            if color not in COLORS:
+                print(f"Invalid color: {color}. Try again.")
+
 
