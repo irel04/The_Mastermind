@@ -1,10 +1,18 @@
 import random
-
+from Binary_Tree_Class import *
 
 # Defining our list of colors for the game
 COLORS = ["R", "G", "B", "Y", "W", "O"]
 TRIES = 2
 CODE_LENGTH = 4
+
+def build_tree(colors):
+    root = BinarySearchTreeNode(colors[0])
+
+    for i in range(1, len(colors)):
+        root.add_child(colors[i])
+
+    return root
 
 def bubble_sort(color_pick):
     for i in range(len(color_pick)-1, 0, -1):
@@ -50,15 +58,15 @@ def player_guess():
 
 # THis function is for checking and validating if the guess of the user is/has the same color combination with the color generator
 def check_code(guess, key_to_correction):
+    key_tree = build_tree(key_to_correction)
     color_count = {}
     correct_pos = 0
     incorrect_pos = 0
 
     # Iterating the color in the key then making if-else statement to check then append it to dictionary
-    for color in key_to_correction:
-        if color not in color_count:
-            color_count[color] = 0
-        color_count[color] += 1
+    if color not in color_count:
+        color_count[color] = 0
+    color_count[color] += 1
     
     # Comparing which colors are in correct position
     for guess_color, real_color in zip(guess, key_to_correction):
