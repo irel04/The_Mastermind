@@ -3,16 +3,28 @@ import random
 
 # Defining our list of colors for the game
 COLORS = ["R", "G", "B", "Y", "W", "O"]
-TRIES = 10
+TRIES = 2
 CODE_LENGTH = 4
+
+def bubble_sort(color_pick):
+    for i in range(len(color_pick)-1, 0, -1):
+        for j in range(i):
+            if color_pick[j] > color_pick[j+1]:
+                temp = color_pick[j]
+                color_pick[j] = color_pick[j+1]
+                color_pick[j+1] = temp
 
 # Creating our function for creating 4-color combination from the COLORS list
 def generate_code():
     code = []
 
+
     for i in range(CODE_LENGTH):
         color = random.choice(COLORS)
         code.append(color)
+
+    # Using the bubble so that the combination will be arrange further
+    bubble_sort(code)
 
     return code
 
@@ -63,7 +75,8 @@ def check_code(guess, key_to_correction):
     return correct_pos, incorrect_pos
 
 # We'll make a function for executing the game
-def game():
+
+if __name__ == "__main__":
     print(f"Welcome to mastermind, you have {TRIES} to guess the code...")
     print("The valid colors are", *COLORS)
     code = generate_code()
@@ -80,5 +93,3 @@ def game():
     else:  
         print("You ran out of tries, the code was: ", *code)
 
-if __name__ == "__main__":
-    game()

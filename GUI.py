@@ -13,6 +13,9 @@ label = customtkinter.CTkLabel(master=frame, text="Welcome to Mastermind", font=
 label.pack(pady=12, padx=10)
 
 label_2 = customtkinter.CTkLabel(master=frame, text=f"You have {TRIES} tries to guess the color combinations", font=('Roboto', 15))
-label_2.pack(pady=13, padx=10)
+label_2.pack(pady=12, padx=10)
+
+label_3 = customtkinter.CTkLabel(master=frame, text=("Valid colors are", COLORS), justify=customtkinter.RIGHT)
+label_3.pack(pady=12, padx=10)
 
 root.mainloop()
