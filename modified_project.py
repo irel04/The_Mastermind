@@ -1,5 +1,5 @@
 import random
-import customtkinter
+
 
 # Defining our list of colors for the game
 COLORS = ["R", "G", "B", "Y", "W", "O"]
