@@ -57,15 +57,14 @@ def player_guess():
     return guess
 
 # THis function is for checking and validating if the guess of the user is/has the same color combination with the color generator
-def check_code(guess, key_to_correction):
+def check_code(guess, key_to_correction, bi_tree):
     color_count = {}
-    color_count_tree = build_tree(key_to_correction)
     correct_pos = 0
     incorrect_pos = 0
 
     # Iterating the color in the key then making if-else statement to check then append it to dictionary
     for color in key_to_correction:
-        if color_count_tree.search(color) == True:
+        if bi_tree.search(color):
             if color in color_count:
                 pass
             else:
@@ -73,6 +72,7 @@ def check_code(guess, key_to_correction):
         color_count[color] += 1
     
     # Comparing which colors are in correct position
+    x = zip(guess, key_to_correction)
     for guess_color, real_color in zip(guess, key_to_correction):
         if guess_color == real_color:
             correct_pos += 1
@@ -92,9 +92,11 @@ if __name__ == "__main__":
     print(f"Welcome to mastermind, you have {TRIES} to guess the code...")
     print("The valid colors are", *COLORS)
     code = generate_code()
+    color_count_tree = build_tree(code)
+
     for attempts in range(1, TRIES + 1):
         guess = player_guess()
-        correct_pos, incorrect_pos = check_code(guess, code)
+        correct_pos, incorrect_pos = check_code(guess, code, color_count_tree)
 
         if correct_pos == CODE_LENGTH:
             print(f"You guessed the code in {attempts} tries!")
