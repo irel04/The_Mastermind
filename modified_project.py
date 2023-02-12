@@ -66,7 +66,10 @@ def check_code(guess, key_to_correction):
     # Iterating the color in the key then making if-else statement to check then append it to dictionary
     for color in key_to_correction:
         if color_count_tree.search(color) == True:
-            color_count[color] = 0
+            if color in color_count:
+                pass
+            else:
+                color_count[color] = 0
         color_count[color] += 1
     
     # Comparing which colors are in correct position
