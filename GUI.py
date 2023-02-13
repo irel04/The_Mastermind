@@ -3,19 +3,34 @@ from modified_project import *
 customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("dark-blue")
 
-root = customtkinter.CTk()
-root.geometry('700x350')
+class ToplevelWindow(customtkinter.CTkToplevel):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.geometry("400x300")
 
-frame = customtkinter.CTkFrame(master=root)
-frame.pack(pady=20, padx=60, fill='both', expand=True)
+        self.label = customtkinter.CTkLabel(self, text="ToplevelWindow")
+        self.label.pack(padx=20, pady=20)
 
-label = customtkinter.CTkLabel(master=frame, text="Welcome to Mastermind", font=('Roboto', 20))
-label.pack(pady=12, padx=10)
+class App(customtkinter.CTk):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.geometry("500x400")
 
-label_2 = customtkinter.CTkLabel(master=frame, text=f"You have {TRIES} tries to guess the color combinations", font=('Roboto', 15))
-label_2.pack(pady=12, padx=10)
+        self.game_title = customtkinter.CTkLabel(self, text="Welcome to MasterMind",width=280, height= 70, 
+        fg_color=("white", "gray75"), corner_radius=8)
+        self.game_title.pack(side="top", padx=20, pady=20)
 
-label_3 = customtkinter.CTkLabel(master=frame, text=("Valid colors are", COLORS), justify=customtkinter.RIGHT)
-label_3.pack(pady=12, padx=10)
+        self.button_1 = customtkinter.CTkButton(self, text="open toplevel", command=self.open_toplevel)
+        self.button_1.pack(side="top", padx=20, pady=20)
 
-root.mainloop()
+        self.toplevel_window = None
+
+    def open_toplevel(self):
+        if self.toplevel_window is None or not self.toplevel_window.winfo_exists():
+            self.toplevel_window = ToplevelWindow(self)  # create window if its None or destroyed
+        else:
+            self.toplevel_window.focus()  # if window exists focus it
+
+if __name__ == "__main__":
+    app = App()
+    app.mainloop()
