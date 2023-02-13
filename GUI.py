@@ -22,14 +22,18 @@ class App(customtkinter.CTk):
         self.game_title.pack(side="top", padx=20, pady=20)
 
         self.available_colors = customtkinter.CTkLabel(self, text="Available colors",width=100, height= 30, 
-        fg_color=("#4B7CE7", "#1E5CE1"), corner_radius=8, font=("Roboto", 15))
+        fg_color="#41be47", corner_radius=8, font=("Roboto", 15), text_color="black")
         self.available_colors.pack(side="top", padx=20, pady=20)
 
         self.color_list = customtkinter.CTkLabel(self, text=COLORS, font=('Roboto', 15))
-        self.color_list.place(relx=0.415, rely=0.35)
+        self.color_list.place(relx=0.5, rely=0.4, anchor=tkinter.CENTER)
 
-        self.button_1 = customtkinter.CTkButton(self, text="Submit", command=self.open_toplevel)
-        self.button_1
+        self.entry = customtkinter.CTkEntry(self, placeholder_text="Enter guess combination", width=170, height=25, 
+        border_width=2, corner_radius=10, justify='center')
+        self.entry.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
+
+        self.button_1 = customtkinter.CTkButton(self, text="Submit", command=self.open_toplevel, width=100, height=25)
+        self.button_1.place(relx=0.5, rely=0.6, anchor=tkinter.CENTER)
         
         self.toplevel_window = None
 
