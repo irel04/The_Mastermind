@@ -17,7 +17,7 @@ class App(customtkinter.CTk):
         self.geometry("500x400")
 
         self.game_title = customtkinter.CTkLabel(self, text="Welcome to MasterMind",width=280, height= 70, 
-        fg_color=("white", "gray75"), corner_radius=8)
+        fg_color=("white", "gray75"), corner_radius=8, font=())
         self.game_title.pack(side="top", padx=20, pady=20)
 
         self.button_1 = customtkinter.CTkButton(self, text="open toplevel", command=self.open_toplevel)
