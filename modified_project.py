@@ -87,15 +87,14 @@ def check_code(guess, key_to_correction, bi_tree):
     return correct_pos, incorrect_pos
 
 # We'll make a function for executing the game
-
-if __name__ == "__main__":
+def game(value):
     print(f"Welcome to mastermind, you have {TRIES} to guess the code...")
     print("The valid colors are", *COLORS)
     code = generate_code()
     color_count_tree = build_tree(code)
 
     for attempts in range(1, TRIES + 1):
-        guess = player_guess()
+        guess = value
         correct_pos, incorrect_pos = check_code(guess, code, color_count_tree)
 
         if correct_pos == CODE_LENGTH:
@@ -106,4 +105,7 @@ if __name__ == "__main__":
 
     else:  
         print("You ran out of tries, the code was: ", *code)
+
+if __name__ == "__main__":
+    game()
 
