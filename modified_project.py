@@ -88,8 +88,6 @@ def check_code(guess, key_to_correction, bi_tree):
 
 # We'll make a function for executing the game
 def game(value):
-    print(f"Welcome to mastermind, you have {TRIES} to guess the code...")
-    print("The valid colors are", *COLORS)
     code = generate_code()
     color_count_tree = build_tree(code)
 
@@ -101,10 +99,10 @@ def game(value):
             print(f"You guessed the code in {attempts} tries!")
             break
 
-        print(f"Correct position/s: {correct_pos} | Incorrect position/s: {incorrect_pos}")
+        return f"Correct position/s: {correct_pos} | Incorrect position/s: {incorrect_pos}"
 
     else:  
-        print("You ran out of tries, the code was: ", *code)
+        return "You ran out of tries, the code was: ", *code
 
 if __name__ == "__main__":
     game()

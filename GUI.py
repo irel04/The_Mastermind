@@ -25,19 +25,25 @@ class App(customtkinter.CTk):
         border_width=2, corner_radius=0, justify='center')
         self.entry.place(relx=0.46, rely=0.5, anchor=tkinter.CENTER)
 
-        self.button_1 = customtkinter.CTkButton(self, text="Submit", command=self.open_toplevel, width=90, height=25)
+        def gameFunction():
+            result = game(self.entry_value)
+            self.text_1.insert("0.0", (result + "\n"))
+
+
+        self.button_1 = customtkinter.CTkButton(self, text="Submit", command=gameFunction, width=90, height=25)
         self.button_1.place(relx=0.4, rely=0.62, anchor=tkinter.CENTER)
 
         # Storing the input of the user
         self.entry_value = self.entry.get()
         # Functions for events that the button were triggered
-       
+
         def clear():
-            self.entry.delete(0, len(self.entry_value)+1)
+            self.entry.delete(0, len(self.entry.get())+1)
         
         def delete():
-            self.entry.delete(len(self.entry_value)-1)
+            self.entry.delete(len(self.entry.get())-1)
 
+        print(self.entry_value)
         self.clear = customtkinter.CTkButton(self, text="Clear", command=clear, width=90, height=25, 
         fg_color="red", hover=True, hover_color="gray")
         self.clear.place(relx=0.6, rely=0.62, anchor=tkinter.CENTER)
@@ -48,23 +54,8 @@ class App(customtkinter.CTk):
 
         self.toplevel_window = None
 
-    def open_toplevel(self):
-        if self.toplevel_window is None or not self.toplevel_window.winfo_exists():
-            self.toplevel_window = ToplevelWindow(self)  # create window if its None or destroyed
-        else:
-            self.toplevel_window.focus()  # if window exists focus it
-
-
-class ToplevelWindow(customtkinter.CTkToplevel):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.geometry("300x100")
-
-        self.label = customtkinter.CTkLabel(self, text="ToplevelWindow")
-        self.label.pack(padx=20, pady=20)
-
-        # Integrating the modified project module
-        self.game = game(self.entry_value)
+        self.text_1 = customtkinter.CTkTextbox(self, width=300, height=75)
+        self.text_1.place(relx=0.52, rely=0.8, anchor=tkinter.CENTER)
 
 
 
