@@ -26,15 +26,13 @@ class App(customtkinter.CTk):
         self.entry.place(relx=0.46, rely=0.5, anchor=tkinter.CENTER)
 
         def gameFunction():
-            result = game(self.entry_value)
+            result = game(self.entry.get())
             self.text_1.insert("0.0", (result + "\n"))
 
 
         self.button_1 = customtkinter.CTkButton(self, text="Submit", command=gameFunction, width=90, height=25)
         self.button_1.place(relx=0.4, rely=0.62, anchor=tkinter.CENTER)
 
-        # Storing the input of the user
-        self.entry_value = self.entry.get()
         # Functions for events that the button were triggered
 
         def clear():
@@ -43,7 +41,6 @@ class App(customtkinter.CTk):
         def delete():
             self.entry.delete(len(self.entry.get())-1)
 
-        print(self.entry_value)
         self.clear = customtkinter.CTkButton(self, text="Clear", command=clear, width=90, height=25, 
         fg_color="red", hover=True, hover_color="gray")
         self.clear.place(relx=0.6, rely=0.62, anchor=tkinter.CENTER)

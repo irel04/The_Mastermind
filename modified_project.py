@@ -37,9 +37,9 @@ def generate_code():
     return code
 
 # This function will allow us to get input from the users
-def player_guess():
+def player_guess(value):
     while True:
-        guess = input("Guess the color combination: ").upper().split(" ") # Split method allow us to separate the input and turn it into a list
+        guess = value.upper().split(" ") # Split method allow us to separate the input and turn it into a list
 
         # Filtering the user input if he entered insufficient colors to the prompt
         if len(guess) != CODE_LENGTH:
@@ -72,7 +72,6 @@ def check_code(guess, key_to_correction, bi_tree):
         color_count[color] += 1
     
     # Comparing which colors are in correct position
-    x = zip(guess, key_to_correction)
     for guess_color, real_color in zip(guess, key_to_correction):
         if guess_color == real_color:
             correct_pos += 1
@@ -92,7 +91,8 @@ def game(value):
     color_count_tree = build_tree(code)
 
     for attempts in range(1, TRIES + 1):
-        guess = value
+        
+        guess = player_guess(value)
         correct_pos, incorrect_pos = check_code(guess, code, color_count_tree)
 
         if correct_pos == CODE_LENGTH:
@@ -104,6 +104,4 @@ def game(value):
     else:  
         return "You ran out of tries, the code was: ", *code
 
-if __name__ == "__main__":
-    game()
 
