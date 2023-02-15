@@ -1,6 +1,7 @@
 import random
 from Binary_Tree_Class import *
 
+
 # Defining our list of colors for the game
 COLORS = ["R", "G", "B", "Y", "W", "O"]
 TRIES = 2
@@ -44,7 +45,7 @@ def player_guess(value):
         # Filtering the user input if he entered insufficient colors to the prompt
         if len(guess) != CODE_LENGTH:
             print(f"You must guess {CODE_LENGTH} colors.")
-            continue
+            # continue
 
         # Spectating if the color given by the user is valid or in the given list of color
         for color in guess:
@@ -90,19 +91,15 @@ code = generate_code()
 color_count_tree = build_tree(code)
 
 def game(value):
-    
-    for attempts in range(1, TRIES + 1):
         
         guess = player_guess(value)
         correct_pos, incorrect_pos = check_code(guess, code, color_count_tree)
 
         if correct_pos == CODE_LENGTH:
-            print(f"You guessed the code in {attempts} tries!")
-            break
+            return f"Well DONE! You guess the code correctly"
+        else:
+            return f"Correct position/s: {correct_pos} | Incorrect position/s: {incorrect_pos}"
 
-        return f"Correct position/s: {correct_pos} | Incorrect position/s: {incorrect_pos}"
-
-    else:  
-        return "You ran out of tries, the code was: ", *code
+    
 
 

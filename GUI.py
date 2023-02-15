@@ -24,10 +24,18 @@ class App(customtkinter.CTk):
         border_width=2, corner_radius=0, justify='center')
         self.entry.place(relx=0.46, rely=0.5, anchor=tkinter.CENTER)
 
+        self.counter = 0
         def gameFunction():
-            result = game(self.entry.get())
-            self.text_1.delete("0.0", str(len(self.entry.get())+0.0))
-            self.text_1.insert("0.0", (result + "\n"))
+            if self.counter != TRIES:
+                result = game(self.entry.get())
+                self.text_1.delete("0.0", str(len(self.entry.get())+0.0))
+                self.text_1.insert("0.0", (result + "\n"))
+                self.counter += 1
+            else:
+                self.text_1.delete("0.0", str(len(self.entry.get())+0.0))
+                self.text_1.insert("0.0", (f"Sorry you reached the maximum TRIES of {TRIES}\n"))
+                self.text_1.insert("0.0", (f"YOU LOSE!"))
+                self.button_1.configure(state="disabled")
 
 
         self.button_1 = customtkinter.CTkButton(self, text="Submit", command=gameFunction, width=90, height=25)
