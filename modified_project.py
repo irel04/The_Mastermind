@@ -86,10 +86,11 @@ def check_code(guess, key_to_correction, bi_tree):
     return correct_pos, incorrect_pos
 
 # We'll make a function for executing the game
-def game(value):
-    code = generate_code()
-    color_count_tree = build_tree(code)
+code = generate_code()
+color_count_tree = build_tree(code)
 
+def game(value):
+    
     for attempts in range(1, TRIES + 1):
         
         guess = player_guess(value)

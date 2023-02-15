@@ -3,7 +3,6 @@ from modified_project import *
 import tkinter
 customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("dark-blue")
-from PIL import Image
 
 class App(customtkinter.CTk):
     def __init__(self, *args, **kwargs):
@@ -27,6 +26,7 @@ class App(customtkinter.CTk):
 
         def gameFunction():
             result = game(self.entry.get())
+            self.text_1.delete("0.0", str(len(self.entry.get())+0.0))
             self.text_1.insert("0.0", (result + "\n"))
 
 
