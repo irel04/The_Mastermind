@@ -4,7 +4,7 @@ from Binary_Tree_Class import *
 
 # Defining our list of colors for the game
 COLORS = ["R", "G", "B", "Y", "W", "O"]
-TRIES = 2
+TRIES = 10
 CODE_LENGTH = 4
 
 def build_tree(colors):
@@ -44,7 +44,7 @@ def player_guess(value):
 
         # Filtering the user input if he entered insufficient colors to the prompt
         if len(guess) != CODE_LENGTH:
-            print(f"You must guess {CODE_LENGTH} colors.")
+            return f"You must guess {CODE_LENGTH} colors."
             # continue
 
         # Spectating if the color given by the user is valid or in the given list of color
@@ -93,6 +93,12 @@ color_count_tree = build_tree(code)
 def game(value):
         
         guess = player_guess(value)
+        
+        if type(guess) == list:
+            pass
+        else:
+            return guess
+        
         correct_pos, incorrect_pos = check_code(guess, code, color_count_tree)
 
         if correct_pos == CODE_LENGTH:
