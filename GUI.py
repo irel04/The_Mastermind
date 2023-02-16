@@ -7,6 +7,8 @@ customtkinter.set_default_color_theme("dark-blue")
 class App(customtkinter.CTk):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        
+        # setting the property of the main window
         self.geometry("500x400")
         self.maxsize(500, 400)
         self.minsize(500, 400)
@@ -26,9 +28,10 @@ class App(customtkinter.CTk):
         border_width=2, corner_radius=0, justify='center')
         self.entry.place(relx=0.46, rely=0.5, anchor=tkinter.CENTER)
 
+        # this for adding the game event when the user click the check button
         self.counter = 0
         def gameFunction():
-            if self.counter != TRIES:
+            if self.counter < TRIES:
                 result = game(self.entry.get())
                 self.text_1.delete("0.0", str(len(self.entry.get())+0.0))
                 self.text_1.insert("0.0", (result + "\n"))
@@ -38,27 +41,25 @@ class App(customtkinter.CTk):
                 self.text_1.insert("0.0", (f"YOU LOSE!"))
                 self.text_1.insert("0.0", (f"Sorry you reached the maximum TRIES of {TRIES}\n"))
                 self.button_1.configure(state="disabled")
-
-        self.button_1 = customtkinter.CTkButton(self, text="Submit", command=gameFunction, width=90, height=25)
-        self.button_1.place(relx=0.4, rely=0.62, anchor=tkinter.CENTER)
-
-        # Functions for events that the button were triggered
-
+        
+        # Other functions for events when the buttons are trigger
         def clear():
             self.entry.delete(0, len(self.entry.get())+1)
         
-        def delete():
+        def retry():
             self.entry.delete(len(self.entry.get())-1)
 
-        self.clear = customtkinter.CTkButton(self, text="Clear", command=clear, width=90, height=25, 
+
+        self.button_1 = customtkinter.CTkButton(self, text="check", command=gameFunction, width=90, height=25)
+        self.button_1.place(relx=0.4, rely=0.62, anchor=tkinter.CENTER)
+
+        self.clear = customtkinter.CTkButton(self, text="retry", command=retry, width=90, height=25, 
         fg_color="red", hover=True, hover_color="gray")
         self.clear.place(relx=0.6, rely=0.62, anchor=tkinter.CENTER)
         
-        self.delete = customtkinter.CTkButton(self, text="delete", command=delete, corner_radius=0, width=70, 
+        self.delete = customtkinter.CTkButton(self, text="clear", command=clear, corner_radius=0, width=70, 
         height=25, border_width=1, fg_color="red", hover=True, hover_color="gray")
         self.delete.place(relx=0.7, rely=0.5, anchor=tkinter.CENTER)
-
-        self.toplevel_window = None
 
         self.text_1 = customtkinter.CTkTextbox(self, width=300, height=75)
         self.text_1.place(relx=0.52, rely=0.8, anchor=tkinter.CENTER)
