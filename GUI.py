@@ -8,6 +8,8 @@ class App(customtkinter.CTk):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.geometry("500x400")
+        self.maxsize(500, 400)
+        self.minsize(500, 400)
 
         self.game_title = customtkinter.CTkLabel(self, text="Welcome to MasterMind",width=280, height= 40, 
         fg_color=("#4B7CE7", "#1E5CE1"), corner_radius=8, font=("Roboto", 23))

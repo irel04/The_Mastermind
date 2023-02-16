@@ -45,13 +45,11 @@ def player_guess(value):
         # Filtering the user input if he entered insufficient colors to the prompt
         if len(guess) != CODE_LENGTH:
             return f"You must guess {CODE_LENGTH} colors."
-            # continue
 
         # Spectating if the color given by the user is valid or in the given list of color
         for color in guess:
             if color not in COLORS:
-                print(f"Invalid color: {color}. Try again.")
-                break
+                return f"Invalid color: {color}. Try again."
         else:
             break
         
