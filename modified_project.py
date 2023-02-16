@@ -5,7 +5,7 @@ from Binary_Tree_Class import *
 # Defining our list of colors for the game
 COLORS = ["R", "G", "B", "Y", "W", "O"]
 TRIES = 10
-CODE_LENGTH = 4
+CODE_LENGTH = 10
 
 def build_tree(colors):
     root = BinarySearchTreeNode(colors[0])
