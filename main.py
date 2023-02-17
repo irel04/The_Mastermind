@@ -62,14 +62,14 @@ class App(customtkinter.CTk):
                 self.entry.delete(0, len(self.entry.get())+1)
 
         def retry():
-            if self.entry.get() == "":
-                pass
-            else:
-                self.entry.delete(0, len(self.entry.get())+1)
+            self.entry.configure(state="normal")
+            self.entry.delete(0, len(self.entry.get())+1)
             self.result = game(self.entry.get())
             self.text_1.delete("0.0", "1000.0")
             self.button_1.configure(state="normal")
-
+            self.delete.configure(state="normal")
+            self.retry.configure(state="disabled")
+            self.counter = 0
        
 
         self.button_1 = customtkinter.CTkButton(self, text="Check", command=gameFunction, width=90, height=25, fg_color="#3BF885",
