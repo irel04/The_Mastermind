@@ -5,7 +5,7 @@ It is simple mind game where you will guess the color combination that was gener
 The raw source code used data structures such as list and dictionary. 
 
 ## ***** What I added *****
-1. **Bubble Sort** – I added this sorting algorithm because I feel that guessing the code with just merely an hint of correct and incorrect position is very hard.
+1. **Bubble Sort** – I added this sorting algorithm because I feel that guessing the code with just merely a hint for correct and incorrect position is very hard.
 I chose to add bubble sort so that the color generator will pick random colors and at the same time will make the color alphabetically arranged.
 
     ![image](https://user-images.githubusercontent.com/116436224/219548170-0a0e16a2-8e3d-4e3b-9ca0-7d0a1f302b26.png)
