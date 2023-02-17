@@ -20,7 +20,7 @@ binary tree will help searching colors to the number of list even if decided to 
 
    ![image](https://user-images.githubusercontent.com/116436224/219548354-2243048e-827a-42ab-973f-be759b3cd74f.png)
 
-3. ** Simple GUI ** – to enhanced the appearance instead of viewing the output on the console of the IDE. I decided to implement CustomTkinter on the program
+3. **Simple GUI** – to enhanced the appearance instead of viewing the output on the console of the IDE. I decided to implement CustomTkinter on the program
 
     ![image](https://user-images.githubusercontent.com/116436224/219549324-55a13060-7d23-4666-a5a6-6c44313e24f1.png)
 
